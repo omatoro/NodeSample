@@ -7,7 +7,6 @@
  */
 var http = require("http");
 var querystring = require("querystring");
-var crypto = require("crypto");
 var setting = require("/home/virtualserver/デスクトップ/project/999_param.js");
 
 /*

@@ -7,7 +7,6 @@
  */
 var http = require("http");
 var querystring = require("querystring");
-var crypto = require("crypto");
 var setting = require("/home/virtualserver/デスクトップ/project/999_param.js");
 
 /*
@@ -15,7 +14,7 @@ var setting = require("/home/virtualserver/デスクトップ/project/999_param.
  */
  var CHAT_DATA = [];
 
- /*
+/*
  * HTMLデータ
  */
 var HTML_HEAD = '\
@@ -23,7 +22,7 @@ var HTML_HEAD = '\
 <html xmlns="http://www.w3.org/1999/xhtml">\
 <head>\
     <meta http-equiv="Content-Type" content="text/html ;charset=UTF-8" />\
-    <title>簡易チャット</title>\
+    <title>簡易掲示板</title>\
 </head>\
 ';
 
@@ -31,7 +30,7 @@ var getHtmlBody = function (dataArray) {
 	var content = '\
 	<body>\
 		<div>\
-			<h1>簡易チャット</h1>\
+			<h1>簡易掲示板</h1>\
 			<h2>サーバを停止すると書き込み内容も削除されます</h2>\
 			<form method="post" action="/">\
 				<div>\
@@ -51,7 +50,7 @@ var getHtmlBody = function (dataArray) {
 
 	return content;
 };
-			
+
 var HTML_FOOTER = '\
 </html>\
 ';
@@ -100,7 +99,7 @@ server.on("request", function(req, res) {
 			}
 			*/
 
-			// チャットの書き込みデータを格納する変数に追加する
+			// 掲示板の書き込みデータを格納する変数に追加する
 			CHAT_DATA.push(query.content);
 
 			// 結果を表示する
