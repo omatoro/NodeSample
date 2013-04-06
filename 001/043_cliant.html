@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>クライアント用HTMLデータ</title>
+
+    <script type="text/javascript" src="http://192.168.1.202:1337/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
+    <!-- ■socket.ioを利用してサーバと通信を行う -->
+    <script>
+
+        var GLOBAL_DATA = "<br />";
+
+        $(document).ready(function () {
+            // コネクションを作る(通信の開始)
+            var socket = io.connect();
+
+            // [myEvent]イベント受信時
+            socket.on("myEvent", function (data, func) {
+                GLOBAL_DATA += data + "<br />";
+                $("#message").html(GLOBAL_DATA);
+
+                // サーバ側で実行される処理(+データを送信)
+                func("メッセージ受信しましたよ！");
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <p>クライアント用のHTMLデータです</p>
+    <p>複数のブラウザを確認すると、他方のブラウザでアクセスしてもイベントが通知されます。</p>
+    <br />
+    <br />
+    <br />
+    <p id="message"></p>
+</body>
+</html>
