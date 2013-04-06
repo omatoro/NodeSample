@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>クライアント用HTMLデータ</title>
+
+    <script type="text/javascript" src="http://192.168.1.202:1337/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+
+    <!-- ■socket.ioを利用してサーバと通信を行う -->
+    <script>
+
+        var GLOBAL_DATA = "<br />";
+
+        $(document).ready(function () {
+            // コネクションを作る(通信の開始)
+            var socket = io.connect();
+
+            /*
+             * 接続時
+             */
+            socket.on("connected", function (data) {
+                // 初めての接続時に発生
+                // 仮の名前を送信する
+                socket.emit("addMenber", "名無し");
+            });
+
+
+            /*
+             * 名前変更時 名前変更ボタンをクリックした
+             */
+            $("#modifybutton").click(function () {
+                // 名前の内容を取得する
+                var name = $("#nametext").val() || null;
+
+                // 名前が取得できたら送信処理を行う
+                if (name) {
+                    socket.emit("modifyName", name);
+                }
+            });
+
+            socket.on("rewriteMember", function (allMemberName) {
+                $("#member").text(allMemberName);
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <h1>簡易チャット</h1>
+
+    <!-- メンバー表示欄 -->
+    <div>
+        <p id="member"></p>
+    </div>
+
+    <!-- 名前変更 -->
+    <div>
+        <input type="text" id="nametext" />
+        <input type="button" value="名前変更" id="modifybutton" />
+    </div>
+
+    <br />
+    <br />
+    <p id="message"></p>
+</body>
+</html>
