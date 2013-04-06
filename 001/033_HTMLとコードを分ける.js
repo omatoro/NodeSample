@@ -6,8 +6,9 @@
  * モジュール読み込み
  */
 var http = require("http");
-var socketio = require("socket.io");
+var fs = require("fs");
 var setting = require("/home/virtualserver/デスクトップ/project/NodeSample/001/999_param.js");
+
 
 /*
  * サーバの作成
@@ -18,21 +19,19 @@ var server = http.createServer();
  * requestイベント受信時の処理(イベントハンドラ)を作成する
  */
 server.on("request", function(req, res) {
-	// HTTPレスポンスヘッダを作成
-	res.writeHead(200, {"Content-Type": "text/html"});
-	var link = "http://" + setting.IP + ":" + setting.PORT + "/socket.io/socket.io.js";
-	res.write("トップページです。<br />");
-	res.write('クライアント用のsocket.ioへアクセスするには、<a href="' + link + '">' + link + '</a>にアクセスしてください。<br />');
-	res.write("このJavaScriptライブラリを利用することで、socket.ioを利用した相互通信が出来るようになります。<br />");
+	// 外部のHTMLデータを読み込み
+	fs.readFile(
+		"/home/virtualserver/デスクトップ/project/NodeSample/001/033_cliant.html",
+		function (err, data) {
+			if (err) { throw err; }
 
-	// レスポンスを終了する
-	res.end();
+			// HTTPレスポンスヘッダを作成・送信(200:OK,500:ServerError,404:NotFound)
+			res.writeHead(200, {"Content-Type": "text/html; charset=UTF-8"});
+			res.end(data);
+		}
+	);
 });
 
-/*
- * socket.ioを利用する
- */
-var io = socketio.listen(server);
 
 /*
  * イベント待受状態を開始する
