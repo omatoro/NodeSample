@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <meta http-equiv="content-style-type" content="text/css">
+        <meta http-equiv="content-script-type" content="text/javascript">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <link rel="apple-touch-icon" href="rsc/Icon@2x.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="rsc/Icon.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="rsc/Icon-72.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="rsc/Icon@2x.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="rsc/Icon@2x.png" />
+
+        <title>RoguePlus</title>
+
+        <style type="text/css">
+        @font-face{
+            font-family: Diesel;
+            src: url('http://rawgithub.com/omatoro/RoguePlus/master/rsc/font/Diesel.TTF') format("truetype");
+        }
+        </style>
+
+        <!-- <script src="http://junk.tmlife.net/lib/tmlib.js/build/tmlib.js"></script> -->
+        <script src="http://rawgithub.com/phi1618/tmlib.js/6ee7b4d17ea0c0edac203920fb80bb755fa1cf18/build/tmlib.js"></script>
+        <script src="http://rawgithub.com/mrdoob/stats.js/master/src/Stats.js"></script>
+        <!-- <script src="lib/plugins/controller.tm.js"></script> -->
+        <!-- <script src="http://rawgithub.com/phi1618/tmlib.js/develop/plugins/controller.tm.js"></script> -->
+        
+        <script src="js/resource.js"></script>
+        <script src="js/param.js"></script>
+
+        <!-- drag & picker -->
+        <script src="http://rawgithub.com/omatoro/tmlib.js_drag/master/extend_inputClass/drag.js"></script>
+        <script src="http://rawgithub.com/omatoro/tmlib.js_iPhonePicker/master/build/iphonepicker.js"></script>
+        
+        <!-- progress bar -->
+        <script src="http://rawgithub.com/omatoro/tmlib.js_progressbar/master/build/build.js"></script>
+
+        <!-- util -->
+        <script src="http://rawgithub.com/omatoro/omtlib.js/master/js/util/timing.js"></script>
+        <script src="http://rawgithub.com/omatoro/omtlib.js/master/js/util/once.js"></script>
+        <script src="http://rawgithub.com/omatoro/omtlib.js/master/js/util/counter.js"></script>
+
+        <script src="js/effect/simplemessagewindow.js"></script>
+        <script src="js/effect/managesimplewindow.js"></script>
+        <script src="js/effect/oneplayanimationsprite.js"></script>
+        <script src="js/effect/oneplayanimationsprite.js"></script>
+        <script src="js/effect/damagednumber.js"></script>
+        <script src="js/effect/baloon.js"></script>
+        <script src="js/effect/glossyimagebutton.js"></script>
+        
+        <script src="js/map/generatemap.js"></script>
+        <script src="js/map/autotile.js"></script>
+        <script src="js/map/mapchip.js"></script>
+        <script src="js/map/mapsprite.js"></script>
+        <script src="js/map/map.js"></script>
+        
+        <script src="js/char/animationcharactor.js"></script>
+        <script src="js/char/player.js"></script>
+        
+        <script src="js/char/enemy/enemy.js"></script>
+        <script src="js/char/enemy/SlimeBlue.js"></script>
+        <script src="js/char/enemy/SlimeGreen.js"></script>
+        <script src="js/char/enemy/SlimeRed.js"></script>
+        <script src="js/char/enemy/SlimeGold.js"></script>
+        <script src="js/char/enemy/SmallBatBlack.js"></script>
+        <script src="js/char/enemy/SmallBatGreen.js"></script>
+        <script src="js/char/enemy/SmallBatRed.js"></script>
+        <script src="js/char/enemy/SmallBatGhost.js"></script>
+        <script src="js/char/enemy/GoblinGrey.js"></script>
+        <script src="js/char/enemy/GoblinGreen.js"></script>
+        <script src="js/char/enemy/GoblinRed.js"></script>
+        <script src="js/char/enemy/BatBlack.js"></script>
+        <script src="js/char/enemy/BatGreen.js"></script>
+        <script src="js/char/enemy/BatBlue.js"></script>
+        <script src="js/char/enemy/BatRed2.js"></script>
+        <script src="js/char/enemy/BatWhite.js"></script>
+        <script src="js/char/enemy/SkeltonNormal.js"></script>
+        <script src="js/char/enemy/SkeltonGreen.js"></script>
+        <script src="js/char/enemy/SkeltonBlue.js"></script>
+        <script src="js/char/enemy/SkeltonRed.js"></script>
+        <script src="js/char/enemy/HarypyNormal.js"></script>
+        <script src="js/char/enemy/LizardManNormal.js"></script>
+        <script src="js/char/enemy/LizardManBlue.js"></script>
+        <script src="js/char/enemy/LizardManRed.js"></script>
+        <script src="js/char/enemy/ZombieNormal.js"></script>
+        <script src="js/char/enemy/ZombieRed.js"></script>
+        <script src="js/char/enemy/GolemNormal.js"></script>
+        <script src="js/char/enemy/GolemGreen.js"></script>
+        <script src="js/char/enemy/GolemBlue.js"></script>
+        <script src="js/char/enemy/GolemRed.js"></script>
+        <script src="js/char/enemy/GolemGhost.js"></script>
+        <script src="js/char/enemy/GhostNormal.js"></script>
+        <script src="js/char/enemy/GargoyleBlack.js"></script>
+        <script src="js/char/enemy/GargoyleRed.js"></script>
+        <script src="js/char/enemy/DragonGreen.js"></script>
+        <script src="js/char/enemy/DragonBlue.js"></script>
+        <script src="js/char/enemy/DragonRed.js"></script>
+        <script src="js/char/enemy/DragonBlack.js"></script>
+        <script src="js/char/enemy/DragonWhite.js"></script>
+        <script src="js/char/enemy/DragonGhost.js"></script>
+        <script src="js/char/enemy/Death.js"></script>
+
+        <script src="js/item/itemlist.js"></script>
+        <script src="js/item/dropitem.js"></script>
+
+        <script src="js/status/status.js"></script>
+        <script src="js/status/face.js"></script>
+
+        <script src="js/stage/stagemanager.js"></script>
+
+        <script src="js/loading/barloadingscene.js"></script>
+        <script src="js/loading/effectloadingscene.js"></script>
+
+
+        <script src="js/scene/titlescene.js"></script>
+        <script src="js/scene/mainscene.js"></script>
+        <script src="js/scene/statusscene.js"></script>
+        <script src="js/scene/endscene.js"></script>
+        <script src="js/main.js"></script>
+
+    </head>
+    <body>
+        <canvas id="world"></canvas>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-41213684-1', 'omatoro.github.io');
+            ga('send', 'pageview');
+        </script>
+    </body>
+</html>
