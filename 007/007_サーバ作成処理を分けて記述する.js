@@ -7,6 +7,13 @@
  */
 var IP_ADDRESS = "localhost";
 var PORT       = 1337;
+var startServer= function () {
+	/*
+	 * サーバ起動時に表示するログ(起動したことが分かりやすい)
+	 */
+	console.log("Server running at http://" + IP_ADDRESS + ":" + PORT + "/");
+	console.log("サーバを終了する際は[ctrl + c]を押してください");
+};
 
 /*
  * モジュール読み込み
@@ -33,9 +40,4 @@ server.on("request", function(req, res) {
 /*
  * イベント待受状態を開始する
  */
-server.listen(PORT, IP_ADDRESS);
-
-/*
- * サーバ起動時に表示するログ(起動したことが分かりやすい)
- */
-console.log("Server running at http://" + IP_ADDRESS + ":" + PORT + "/");
+server.listen(PORT, IP_ADDRESS, startServer);

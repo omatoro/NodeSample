@@ -37,7 +37,7 @@ server.on("request", function(req, res) {
 /*
  * イベント待受状態を開始する
  */
-server.listen(setting.PORT, setting.IP);
+server.listen(setting.PORT, setting.IP, setting.startServer);
 
 /*
  * 通信時の処理
@@ -50,10 +50,3 @@ io.sockets.on("connection", function (socket) {
 		console.log("クライアント：メッセージ受信完了");
 	});
 })
-
-
-/*
- * サーバ起動時に表示するログ(起動したことが分かりやすい)
- */
-console.log("Server running at http://" + setting.IP + ":" + setting.PORT + "/");
-console.log("サーバを終了する際は[ctrl + c]を押してください");

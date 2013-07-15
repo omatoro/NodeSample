@@ -37,6 +37,7 @@ database.open(function (err, db) {
 
 /*
  * サーバ起動時に表示するログ(起動したことが分かりやすい)
+ * 厳密にはサーバ起動時では無いので注意
  */
 console.log("Server running at http://" + setting.IP + ":" + setting.PORT + "/");
 console.log("サーバを終了する際は[ctrl + c]を押してください");

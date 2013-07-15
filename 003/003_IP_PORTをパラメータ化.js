@@ -10,6 +10,7 @@ var http = require("http");
 http.createServer(function (req, res) {
 	res.writeHead(200, {"Content-Type": "text/plain"});
 	res.end("hello, world!\n");
-}).listen(PORT, IP_ADDRESS);
-
-console.log("Server running at http://" + IP_ADDRESS + ":" + PORT + "/");
+}).listen(PORT, IP_ADDRESS, function () {
+	console.log("Server running at http://" + IP_ADDRESS + ":" + PORT + "/");
+	console.log("サーバを終了する際は[ctrl + c]を押してください");
+});

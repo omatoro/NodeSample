@@ -23,9 +23,10 @@ http.createServer(function (req, res) {
 	res.writeHead(200, {"Content-Type": "text/plain"});
 	// 中身の文字列を送信
 	res.end("hello, world! : URL " + req.url);
-}).listen(PORT, IP_ADDRESS);
-
-/*
- * サーバ起動時に表示するログ(起動したことが分かりやすい)
- */
-console.log("Server running at http://" + IP_ADDRESS + ":" + PORT + "/");
+}).listen(PORT, IP_ADDRESS, function () {
+	/*
+	 * サーバ起動時に表示するログ(起動したことが分かりやすい)
+	 */
+	console.log("Server running at http://" + IP_ADDRESS + ":" + PORT + "/");
+	console.log("サーバを終了する際は[ctrl + c]を押してください");
+});
