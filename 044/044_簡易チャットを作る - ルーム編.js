@@ -63,7 +63,13 @@ server.on("request", function(req, res) {
 	fs.readFile(
 		"./044_client.html",
 		function (err, data) {
-			if (err) { throw err; }
+			if (err) {
+				// とりあえずconsole.logでログを残す
+				// エラーが出たらnodeは死ぬのでendする
+				console.log(err);
+				res.writeHead(500);
+				res.end("Server error : " + err);
+			}
 
 			// HTTPレスポンスヘッダを作成・送信(200:OK,500:ServerError,404:NotFound)
 			res.writeHead(200, {"Content-Type": "text/html; charset=UTF-8"});

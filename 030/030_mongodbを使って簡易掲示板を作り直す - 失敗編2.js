@@ -17,7 +17,11 @@ var setting = require("./999_param.js");
 var server = new mongodb.Server(setting.DB_IP, setting.DB_PORT);
 var database = new mongodb.Db(setting.DB_029_NAME, server, {safe: true});
 database.open(function (err, db) {
-	if (err) { throw err; }
+	if (err) {
+		// とりあえずconsole.logでログを残す
+		console.log(err);
+		return ;
+	}
 	// 以下データベースにアクセスするコード
 	console.log(setting.DB_029_NAME + "にアクセスしました");
 });
@@ -25,7 +29,11 @@ database.open(function (err, db) {
 var setDBData = function (data) {
 	// データを格納する
 	database.collection("datas").insert(data, function (err, result) {
-		if (err) { throw err; }
+		if (err) {
+			// とりあえずconsole.logでログを残す
+			console.log(err);
+			return ;
+		}
 		console.log("sampledbにデータを格納しました");
 	});
 };

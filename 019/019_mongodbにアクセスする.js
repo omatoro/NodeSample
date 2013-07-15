@@ -15,7 +15,11 @@ var server = new mongodb.Server(setting.DB_IP, setting.DB_PORT);
 var database = new mongodb.Db(setting.DB_NAME, server, { safe: true});
 
 database.open(function (err, db) {
-	if (err) { throw err; }
+	if (err) {
+		// とりあえずconsole.logでログを残す
+		console.log(err);
+		return ;
+	}
 	// 以下データベースにアクセスするコード
 	console.log("sampledbにアクセスしました");
 });

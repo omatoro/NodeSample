@@ -21,7 +21,11 @@ var database = new mongodb.Db(setting.DB_032_NAME, server, {safe: true});
 var TODO_DATA;
 
 database.open(function (err, db) {
-	if (err) { throw err; }
+	if (err) {
+		// とりあえずconsole.logでログを残す
+		console.log(err);
+		return ;
+	}
 	// 以下データベースにアクセスするコード
 	console.log(setting.DB_032_NAME + "にアクセスしました");
 
@@ -36,7 +40,11 @@ database.open(function (err, db) {
 var setDBData = function (data) {
 	// データを格納する
 	database.collection("datas").insert(data, function (err, result) {
-		if (err) { throw err; }
+		if (err) {
+			// とりあえずconsole.logでログを残す
+			console.log(err);
+			return ;
+		}
 		console.log(setting.DB_032_NAME + "のデータを格納しました");
 	});
 };
