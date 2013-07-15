@@ -84,7 +84,7 @@ var getChat = function () {
 server.on("request", function(req, res) {
 	// 外部のHTMLデータを読み込み
 	fs.readFile(
-		"./045_cliant.html",
+		"./045_client.html",
 		function (err, data) {
 			if (err) { throw err; }
 

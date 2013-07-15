@@ -23,7 +23,7 @@ var io = socketio.listen(server);
 server.on("request", function(req, res) {
 	// 外部のHTMLデータを読み込み
 	fs.readFile(
-		"./040_cliant.html",
+		"./040_client.html",
 		function (err, data) {
 			if (err) { throw err; }
 

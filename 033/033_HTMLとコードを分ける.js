@@ -21,7 +21,7 @@ var server = http.createServer();
 server.on("request", function(req, res) {
 	// 外部のHTMLデータを読み込み
 	fs.readFile(
-		"./033_cliant.html",
+		"./033_client.html",
 		function (err, data) {
 			if (err) { throw err; }
 
