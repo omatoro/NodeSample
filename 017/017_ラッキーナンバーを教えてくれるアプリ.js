@@ -73,8 +73,8 @@ server.on("request", function(req, res) {
 	else {
 		// 入力されたデータを取得する
 		req.data = "";
-		req.on("data", function (chunk) {
-			req.data += chunk;
+		req.on("readable", function () {
+			req.data += req.read();
 		});
 		req.on("end", function () {
 			// 取得したデータを整形する

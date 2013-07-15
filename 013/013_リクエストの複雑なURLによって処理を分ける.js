@@ -26,16 +26,16 @@ server.on("request", function(req, res) {
 
 	/* url.parseを使用すると以下のようなデータが帰ってくる
 	{
-	　　protocol: 'http:',
-	  slashes: true,
-	  host: '192.168.1.202:1337',
-	  port: '1337',
-	  hostname: '192.168.1.202',
-	  href: 'http://192.168.1.202:1337/foo/test?bar=value',
-	  search: '?bar=value',
-	  query: 'bar=value',
-	  pathname: '/foo/test',
-	  path: '/foo/test?bar=value'
+		protocol: 'http:',
+		slashes: true,
+		host: '192.168.1.202:1337',
+		port: '1337',
+		hostname: '192.168.1.202',
+		href: 'http://192.168.1.202:1337/foo/test?bar=value',
+		search: '?bar=value',
+		query: 'bar=value',
+		pathname: '/foo/test',
+		path: '/foo/test?bar=value'
 	}
 
 	url.parse(req.url); と記述しても良い
