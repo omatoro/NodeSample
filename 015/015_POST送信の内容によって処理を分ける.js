@@ -21,8 +21,8 @@ server.on("request", function(req, res) {
 	// POST送信を受け取る
 	if (req.method === "POST") {
 		var data = "";
-		req.on("data", function (chunk) {
-			data += chunk;
+		req.on("readable", function () {
+			data += req.read();
 		});
 		req.on("end", function () {
 			// POST送信終了時、送信データを整形する(parse処理はhttp.parseと似ている)
