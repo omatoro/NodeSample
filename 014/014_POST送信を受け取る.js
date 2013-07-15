@@ -20,8 +20,15 @@ server.on("request", function(req, res) {
 	// POST送信を受け取る
 	if (req.method === "POST") {
 		var data = "";
-		req.on("data", function (chunk) {
-			data += chunk;
+		// stream1: 今時ではないが、古いnode.jsに対応する場合はこっちでやる
+		// req.on("data", function (chunk) {
+		// 	data += chunk;
+		// });
+
+		// stream2: node.js v0.10 以上であればこっちの方がいい
+		// 理由：http://d.hatena.ne.jp/jovi0608/20130312/1363099862
+		req.on("readable", function () {
+			data += req.read();
 		});
 		req.on("end", function () {
 			// POST送信終了時
