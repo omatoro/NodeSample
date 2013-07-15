@@ -3,7 +3,7 @@
  * IPなど設定：http://testcording.com/?p=1164
  */
 
-var IP_ADDRESS = localhost;
+var IP_ADDRESS = "localhost";
 var PORT       = 1337;
 
 var http = require("http");
