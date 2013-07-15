@@ -1,5 +1,5 @@
 /*
  * 設定ファイル
  */
-exports.IP   = "192.168.1.202";
+exports.IP   = localhost;
 exports.PORT = 1337;

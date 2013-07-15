@@ -5,7 +5,7 @@
 /*
  * パラメータ
  */
-var IP_ADDRESS = "192.168.1.202";
+var IP_ADDRESS = localhost;
 var PORT       = 1337;
 
 /*
