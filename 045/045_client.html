@@ -17,16 +17,6 @@
             var socket = io.connect();
 
             /*
-             * 接続時
-             */
-            socket.on("connected", function (data) {
-                // 初めての接続時に発生
-                // 仮の名前を送信する
-                socket.emit("addMenber", "名無し");
-            });
-
-
-            /*
              * 名前変更ボタンをクリックした
              */
             $("#modifybutton").click(function () {

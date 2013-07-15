@@ -88,8 +88,9 @@ server.listen(setting.PORT, setting.IP, setting.startServer);
  * クライアント側がio.connect()を実行すると、サーバの以下処理が実行される(イベント名：connection)
  */
 io.sockets.on("connection", function (socket) {
-	// 接続したら[connected]イベントを発信
-	socket.emit("connected", {});
+	// 接続時に名無しとして登録
+	setMember(socket.id, "名無し");
+	io.sockets.emit("rewriteMember", getMember());
 
 	// クライアント接続時に発した[addMember]イベントの受信処理
 	socket.on("addMenber", function (client) {
