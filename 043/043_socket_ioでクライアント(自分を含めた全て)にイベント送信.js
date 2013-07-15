@@ -46,14 +46,20 @@ server.listen(setting.PORT, setting.IP, setting.startServer);
 io.sockets.on("connection", function (socket) {
 	// [myEvent]イベントを自分以外に発信(コールバック関数を登録:クライアントから呼び出し可能)
 
-	// 接続したクライアント以外に送信
-	socket.broadcast.emit("myEvent", "誰かが接続しました。", function (data) {
-		// クライアントから呼び出され、サーバで処理が実行される
-		console.log("クライアント：" + data);
-	});
+	// // 接続したクライアント以外に送信
+	// socket.broadcast.emit("myEvent", "誰かが接続しました。", function (data) {
+	// 	// クライアントから呼び出され、サーバで処理が実行される
+	// 	console.log("クライアント：" + data);
+	// });
 
-	// 接続したクライアント自身に送信
-	socket.emit("myEvent", "接続しました。", function (data) {
+	// // 接続したクライアント自身に送信
+	// socket.emit("myEvent", "接続しました。", function (data) {
+	// 	// クライアントから呼び出され、サーバで処理が実行される
+	// 	console.log("クライアント：" + data);
+	// });
+
+	// 接続したクライアント全てに送信(一つの処理で自分・自分以外への送信を兼ねる)
+	io.sockets.emit("myEvent", "接続しました。", function (data) {
 		// クライアントから呼び出され、サーバで処理が実行される
 		console.log("クライアント：" + data);
 	});

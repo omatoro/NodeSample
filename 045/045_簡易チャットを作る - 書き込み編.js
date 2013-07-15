@@ -116,8 +116,7 @@ io.sockets.on("connection", function (socket) {
 		setMember(socket.id, client);
 
 		// 名前を追加したので、メンバー名の書き換えメッセージを送信
-		socket.emit("rewriteMember", getMember());
-		socket.broadcast.emit("rewriteMember", getMember());
+		io.sockets.emit("rewriteMember", getMember());
 	});
 
 	// クライアントが名前変更時に発したイベントの受信処理
@@ -128,8 +127,7 @@ io.sockets.on("connection", function (socket) {
 		modifyMember(socket.id, client);
 
 		// 名前を変更したので、メンバー名の書き換えメッセージを送信
-		socket.emit("rewriteMember", getMember());
-		socket.broadcast.emit("rewriteMember", getMember());
+		io.sockets.emit("rewriteMember", getMember());
 	});
 
 	// クライアントがチャット送信時に発したイベントの受信処理
@@ -140,8 +138,7 @@ io.sockets.on("connection", function (socket) {
 		setChat(socket.id, chat);
 
 		// チャットデータを追加したので、チャット書き換えメッセージを送信
-		socket.emit("rewriteChat", getChat());
-		socket.broadcast.emit("rewriteChat", getChat());
+		io.sockets.emit("rewriteChat", getChat());
 	});
 
 
@@ -151,8 +148,7 @@ io.sockets.on("connection", function (socket) {
 		deleteMember(socket.id);
 
 		// 名前を削除したので、メンバー名の書き換えメッセージを送信
-		socket.emit("rewriteMember", getMember());
-		socket.broadcast.emit("rewriteMember", getMember());
+		io.sockets.emit("rewriteMember", getMember());
 	});
 
 });
