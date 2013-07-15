@@ -1,0 +1,16 @@
+{
+    "name": "NodeSample",
+    "description": "NodeSample is node.js + socket.io samples.",
+    "version": "0.0.1",
+    "author": {
+        "name": "omatoro"
+    },
+    "engines": {
+        "node": ">= 0.10.0"
+    },
+    "dependencies": {
+        "socket.io": "0.9.16",
+        "express": "3.3.4",
+        "mongodb": ""
+    }
+}
