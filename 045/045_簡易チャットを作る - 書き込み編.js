@@ -19,44 +19,62 @@ var io = socketio.listen(server);
 /*
  * メンバーデータ
  */
-var MEMBER = [];
+// var MEMBER = [];
+var MEMBER = {};
 var setMember = function (id, name) {
-	MEMBER.push({"id": id, "name": name});
+	// MEMBER.push({"id": id, "name": name});
+	MEMBER[id] = name;
 };
 var deleteMember = function (id) {
-	for (var i = 0; i < MEMBER.length; ++i) {
-		if (MEMBER[i].id === id) {
-			MEMBER.splice(i, 1);
-		}
-	}
+	// ループに頼るとnode.jsはシングルスレッドなので処理が遅滞
+	// for (var i = 0; i < MEMBER.length; ++i) {
+	// 	if (MEMBER[i].id === id) {
+	// 		MEMBER.splice(i, 1);
+	// 	}
+	// }
+	delete MEMBER[id];
 };
 var modifyMember = function (id, name) {
-	for (var i = 0; i < MEMBER.length; ++i) {
-		if (MEMBER[i].id === id) {
-			MEMBER[i].name = name;
-		}
+	// ループに頼るとnode.jsはシングルスレッドなので処理が遅滞
+	// for (var i = 0; i < MEMBER.length; ++i) {
+	// 	if (MEMBER[i].id === id) {
+	// 		MEMBER[i].name = name;
+	// 	}
+	// }
+	if (MEMBER[id] !== void(0)) {
+		MEMBER[id] = name;
 	}
 };
 var getMember = function () {
-	// var result = [];
 	var result = "";
-	for (var i = 0; i < MEMBER.length; ++i) {
-		// result.push(MEMBER[i].name);
-		if (i !== MEMBER.length-1) {
-			result += MEMBER[i].name + ", ";
-		}
-		else {
-			result += MEMBER[i].name;
-		}
+	// ループに頼るとnode.jsはシングルスレッドなので処理が遅滞
+	// for (var i = 0; i < MEMBER.length; ++i) {
+	// 	// result.push(MEMBER[i].name);
+	// 	if (i !== MEMBER.length-1) {
+	// 		result += MEMBER[i].name + ", ";
+	// 	}
+	// 	else {
+	// 		result += MEMBER[i].name;
+	// 	}
+	// }
+	for (var prop in MEMBER) {
+		// 最後に", "がつくけど無視
+		result += MEMBER[prop] + ", ";
 	}
+	console.log("result : " + result);
 	return result;
 };
 var getName = function (id) {
-	for (var i = 0; i < MEMBER.length; ++i) {
-		if (MEMBER[i].id === id) {
-			return MEMBER[i].name;
-		}
+	// ループに頼るとnode.jsはシングルスレッドなので処理が遅滞
+	// for (var i = 0; i < MEMBER.length; ++i) {
+	// 	if (MEMBER[i].id === id) {
+	// 		return MEMBER[i].name;
+	// 	}
+	// }
+	if (MEMBER[id] !== void(0)) {
+		return MEMBER[id];
 	}
+	return null;
 };
 
 
@@ -66,6 +84,7 @@ var getName = function (id) {
 var CHAT = [];
 var setChat = function (id, chat) {
 	var name = getName(id);
+	console.log(name);
 	CHAT.push({"name": name, "chat": chat});
 };
 var getChat = function () {
